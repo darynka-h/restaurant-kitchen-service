@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
@@ -9,3 +10,11 @@ class DishType(models.Model):
 
     def __str__(self):
         return {self.name}
+
+
+class Cook(AbstractUser):
+    years_of_experience = models.IntegerField()
+
+    class Meta:
+        ordering = ["username"]
+
