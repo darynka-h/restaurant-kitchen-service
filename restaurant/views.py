@@ -12,8 +12,8 @@ def index(request):
     context = {
         "num_cooks": num_cooks,
         "num_dishes": num_dishes,
-        "num_dish_types": num_dish_types
-               }
+        "num_dish_types": num_dish_types,
+    }
     return render(request, "restaurant/index.html", context=context)
 
 

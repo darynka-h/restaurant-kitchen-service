@@ -15,10 +15,10 @@ class CookAdmin(UserAdmin):
             (
                 "Additional info",
                 {
-                 "fields": (
-                     "first_name",
-                     "last_name",
-                     "years_of_experience",
+                    "fields": (
+                        "first_name",
+                        "last_name",
+                        "years_of_experience",
                     )
                 }
             ),

@@ -9,6 +9,6 @@ urlpatterns = [
         DishTypeListView.as_view(),
         name="dish-type-list"
     ),
-    ]
+]
 
 app_name = "restaurant"
