@@ -21,3 +21,28 @@ class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "restaurant/dish_type_list.html"
     context_object_name = "dish_type_list"
+
+
+class DishListView(generic.ListView):
+    queryset = Dish.objects.all().select_related("dish_type")
+    model = Dish
+    template_name = "restaurant/dish_list.html"
+    context_object_name = "dish_list"
+
+
+class DishDetailView(generic.DetailView):
+    model = Dish
+    field = "__all__"
+    template_name = "restaurant/dish_detail.html"
+
+
+class CookListView(generic.ListView):
+    model = Cook
+    template_name = "restaurant/cook_list.html"
+    context_object_name = "cook_list"
+
+
+class CookDetailView(generic.DetailView):
+    model = Cook
+    queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
+    template_name = "restaurant/cook_detail.html"
