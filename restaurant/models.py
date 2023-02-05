@@ -9,11 +9,12 @@ class DishType(models.Model):
         ordering = ["name"]
 
     def __str__(self):
-        return {self.name}
+        return self.name
 
 
 class Cook(AbstractUser):
     years_of_experience = models.IntegerField(null=True, blank=True)
+    photo = models.ImageField(upload_to="photos/", null=True, blank=True)
 
     class Meta:
         ordering = ["username"]
@@ -26,7 +27,7 @@ class Cook(AbstractUser):
 
 class Dish(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
     cooks = models.ManyToManyField(Cook, related_name="dishes")
 
