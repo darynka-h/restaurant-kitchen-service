@@ -8,7 +8,7 @@ from restaurant.models import Cook, Dish, DishType
 class CookAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("years_of_experience",)
     fieldsets = UserAdmin.fieldsets + (
-        ("Additional info", {"fields": ("years_of_experience",)}),
+        ("Additional info", {"fields": ("years_of_experience", "photo",)}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
             (
@@ -18,6 +18,7 @@ class CookAdmin(UserAdmin):
                         "first_name",
                         "last_name",
                         "years_of_experience",
+                        "photo",
                     )
                 }
             ),
