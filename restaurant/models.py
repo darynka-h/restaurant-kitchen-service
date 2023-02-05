@@ -30,6 +30,7 @@ class Dish(models.Model):
     description = models.TextField(null=True, blank=True)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
     cooks = models.ManyToManyField(Cook, related_name="dishes")
+    dish_image = models.ImageField(upload_to="photos/", null=True, blank=True)
 
     class Meta:
         ordering = ["name"]
