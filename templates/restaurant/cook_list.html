@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block title %} About US {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} about-us {% endblock body_class %}
+
+{% block content %}
+
+  {% include "includes/navigation.html" %}
+
+  <!-- End Navbar -->
+  <!-- -------- START HEADER 7 w/ text and video ------- -->
+  <header class="bg-gradient-dark">
+    <div class="page-header section-height-25" >
+
+    </div>
+  </header>
+
+  <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
+  <section class="pt-sm-8 pb-5 position-relative bg-gradient-dark overflow-hidden">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 text-left mb-5 mt-5">
+          <h3 class="text-white z-index-1 position-relative">The Executive Team</h3>
+          <p class="text-white opacity-8 mb-0">There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-12">
+          <div class="card card-profile overflow-hidden">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                <a href="javascript:;">
+                  <div class="p-3 pe-0">
+                    <img class="w-100 border-radius-md" src="{{ ASSETS_ROOT }}/img/open-uri20150422-20810-f3qxzs_4923c203.webp">
+                  </div>
+                </a>
+              </div>
+              <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                <div class="card-body">
+                  <h5 class="mb-0">Emma Roberts</h5>
+                  <h6 class="text-info">UI Designer</h6>
+                  <p class="mb-0">Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="card card-profile mt-lg-0 mt-5 overflow-hidden">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                <a href="javascript:;">
+                  <div class="p-3 pe-0">
+                    <img class="w-100 border-radius-md" src="{{ ASSETS_ROOT }}/img/chef.webp">
+                  </div>
+                </a>
+              </div>
+              <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                <div class="card-body">
+                  <h5 class="mb-0">William Pearce</h5>
+                  <h6 class="text-info">Boss</h6>
+                  <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-lg-6 col-12">
+          <div class="card card-profile overflow-hidden z-index-2">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                <a href="javascript:;">
+                  <div class="p-3 pe-0">
+                    <img class="w-100 border-radius-md" src="{{ ASSETS_ROOT }}/img/auguste.webp">
+                  </div>
+                </a>
+              </div>
+              <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                <div class="card-body">
+                  <h5 class="mb-0">Ivana Flow</h5>
+                  <h6 class="text-info">Athlete</h6>
+                  <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="card card-profile mt-lg-0 mt-5 overflow-hidden z-index-2">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                <a href="javascript:;">
+                  <div class="p-3 pe-0">
+                    <img class="w-100 border-radius-md" src="{{ ASSETS_ROOT }}/img/skinner.webp">
+                  </div>
+                </a>
+              </div>
+              <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                <div class="card-body">
+                  <h5 class="mb-0">Sophia Garcia</h5>
+                  <h6 class="text-info">JS Developer</h6>
+                  <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="position-absolute w-100 bottom-0">
+      <svg width="100%" viewBox="0 -1 1920 166" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <title>wave-up</title>
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Artboard" transform="translate(0.000000, 5.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="wave-up" transform="translate(0.000000, -5.000000)">
+              <path d="M0,70 C298.666667,105.333333 618.666667,95 960,39 C1301.33333,-17 1621.33333,-11.3333333 1920,56 L1920,165 L0,165 L0,70 Z" id="Path" fill="#f8f9fa"></path>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+  <script src="{{ ASSETS_ROOT }}/js/plugins/countup.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+  <script>
+    // get the element to animate
+    var element = document.getElementById('count-stats');
+    var elementHeight = element.clientHeight;
+
+    // listen for scroll event and call animate function
+
+    document.addEventListener('scroll', animate);
+
+    // check if element is in view
+    function inView() {
+      // get window height
+      var windowHeight = window.innerHeight;
+      // get number of pixels that the document is scrolled
+      var scrollY = window.scrollY || window.pageYOffset;
+      // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+      var scrollPosition = scrollY + windowHeight;
+      // get element position (distance from the top of the page to the bottom of the element)
+      var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+
+      // is scroll position greater than element position? (is element in view?)
+      if (scrollPosition > elementPosition) {
+        return true;
+      }
+
+      return false;
+    }
+
+    var animateComplete = true;
+    // animate element when it is in view
+    function animate() {
+
+      // is element in view?
+      if (inView()) {
+        if (animateComplete) {
+          if (document.getElementById('state1')) {
+            const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+            if (!countUp.error) {
+              countUp.start();
+            } else {
+              console.error(countUp.error);
+            }
+          }
+          if (document.getElementById('state2')) {
+            const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+            if (!countUp1.error) {
+              countUp1.start();
+            } else {
+              console.error(countUp1.error);
+            }
+          }
+          if (document.getElementById('state3')) {
+            const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+            if (!countUp2.error) {
+              countUp2.start();
+            } else {
+              console.error(countUp2.error);
+            };
+          }
+          animateComplete = false;
+        }
+      }
+    }
+
+    if (document.getElementById('typed')) {
+      var typed = new Typed("#typed", {
+        stringsElement: '#typed-strings',
+        typeSpeed: 90,
+        backSpeed: 90,
+        backDelay: 200,
+        startDelay: 500,
+        loop: true
+      });
+    }
+  </script>
+  <script>
+    if (document.getElementsByClassName('page-header')) {
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.pageYOffset;
+        var bgParallax = document.querySelector('.page-header');
+        var limit = bgParallax.offsetTop + bgParallax.offsetHeight;
+        if (scrollPosition > bgParallax.offsetTop && scrollPosition <= limit) {
+          bgParallax.style.backgroundPositionY = (50 - 10 * scrollPosition / limit * 3) + '%';
+        } else {
+          bgParallax.style.backgroundPositionY = '50%';
+        }
+      });
+    }
+  </script>
+
+{% endblock javascripts %}
