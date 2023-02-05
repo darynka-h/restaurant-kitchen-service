@@ -4,6 +4,7 @@ from django.db import models
 
 class DishType(models.Model):
     name = models.CharField(max_length=255)
+    dish_type_image = models.ImageField(upload_to="photos/", null=True, blank=True)
 
     class Meta:
         ordering = ["name"]
