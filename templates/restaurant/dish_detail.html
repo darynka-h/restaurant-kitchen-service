@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %} Author {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} blog-author bg-gray-100 {% endblock body_class %}
+
+{% block content %}
+
+  {% include "includes/navigation.html" %}
+
+  <section class="py-sm-7 py-5 position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mx-auto">
+          <div class="row py-lg-7 py-5">
+            <div class="col-lg-3 col-md-5 position-relative my-auto">
+              <a href="javascript:;">
+                  <img class="img border-radius-lg max-width-200 w-100 position-relative z-index-2" src="{{dish.dish_image.url}}" alt="connect">
+              </a>
+            </div>
+            <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mt-sm-0 mt-4 m-lg-0">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h4 class="mb-0">{{ dish.name }}</h4>
+                <div class="d-block">
+                  <a type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0" href="{% url "restaurant:dish-update" pk=dish.id %}">Update</a>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-auto">
+                  <span class="h6">Dish type: {{ dish.dish_type }}</span>
+                </div>
+              </div>
+              <p class="text-lg mb-0">
+                {% if dish.description %}
+                {{ dish.description }}
+                {% else %}
+                  <p>There are not description for this dish yet! Ask it in waiter =) </p>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="mb-5">Check cooks who are cooking it</h3>
+        </div>
+      </div>
+      {% if dish.cooks %}
+        <div class="row">
+          {% for cook in dish.cooks.all %}
+          <div class="col-lg-3 col-sm-6">
+            <div class="card card-plain card-blog">
+              <div class="card-image border-radius-lg position-relative">
+                <a href="javascript:;">
+                  <img class="w-100 border-radius-lg move-on-hover shadow" src="{{ cook.photo.url }}" alt="connect">
+                </a>
+              </div>
+              <div class="card-body px-0">
+                <h5>
+                  <a href="javascript:;" class="text-dark font-weight-bold">{{ cook.first_name }} {{ cook.last_name}}</a>
+                </h5>
+                <p>
+                  I'm my trying to cook {{dish.name|lower}} as soon as possible
+                </p>
+                <a href="javascript:;"><a class="text-info icon-move-right" href="{% url "restaurant:cook-detail" pk=cook.id %}">Read More</a>
+                  <i class="fas fa-arrow-right text-sm text-info icon-move-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+        </div>
+      {% else %}
+        <p>There are no cooks for cooking this dish.</p>
+      {% endif %}
+    </div>>
+  </section>
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+  <script src="{{ ASSETS_ROOT }}/js/plugins/countup.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+  <script>
+    // get the element to animate
+    var element = document.getElementById('count-stats');
+    var elementHeight = element.clientHeight;
+
+    // listen for scroll event and call animate function
+
+    document.addEventListener('scroll', animate);
+
+    // check if element is in view
+    function inView() {
+      // get window height
+      var windowHeight = window.innerHeight;
+      // get number of pixels that the document is scrolled
+      var scrollY = window.scrollY || window.pageYOffset;
+      // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+      var scrollPosition = scrollY + windowHeight;
+      // get element position (distance from the top of the page to the bottom of the element)
+      var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+
+      // is scroll position greater than element position? (is element in view?)
+      if (scrollPosition > elementPosition) {
+        return true;
+      }
+
+      return false;
+    }
+
+    var animateComplete = true;
+    // animate element when it is in view
+    function animate() {
+
+      // is element in view?
+      if (inView()) {
+        if (animateComplete) {
+          if (document.getElementById('state1')) {
+            const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+            if (!countUp.error) {
+              countUp.start();
+            } else {
+              console.error(countUp.error);
+            }
+          }
+          if (document.getElementById('state2')) {
+            const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+            if (!countUp1.error) {
+              countUp1.start();
+            } else {
+              console.error(countUp1.error);
+            }
+          }
+          if (document.getElementById('state3')) {
+            const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+            if (!countUp2.error) {
+              countUp2.start();
+            } else {
+              console.error(countUp2.error);
+            };
+          }
+          animateComplete = false;
+        }
+      }
+    }
+
+    if (document.getElementById('typed')) {
+      var typed = new Typed("#typed", {
+        stringsElement: '#typed-strings',
+        typeSpeed: 90,
+        backSpeed: 90,
+        backDelay: 200,
+        startDelay: 500,
+        loop: true
+      });
+    }
+  </script>
+  <script>
+    if (document.getElementsByClassName('page-header')) {
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.pageYOffset;
+        var bgParallax = document.querySelector('.page-header');
+        var limit = bgParallax.offsetTop + bgParallax.offsetHeight;
+        if (scrollPosition > bgParallax.offsetTop && scrollPosition <= limit) {
+          bgParallax.style.backgroundPositionY = (50 - 10 * scrollPosition / limit * 3) + '%';
+        } else {
+          bgParallax.style.backgroundPositionY = '50%';
+        }
+      });
+    }
+  </script>
+
+{% endblock javascripts %}
