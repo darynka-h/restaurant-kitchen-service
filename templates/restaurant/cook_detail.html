@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %} Author {% endblock title %}
 
@@ -57,8 +57,8 @@
         </div>
       </div>
       {% if cook.dishes %}
-      {% for dish in cook.dishes.all %}
         <div class="row">
+          {% for dish in cook.dishes.all %}
           <div class="col-lg-3 col-sm-6">
             <div class="card card-plain card-blog">
               <div class="card-image border-radius-lg position-relative">
@@ -80,149 +80,13 @@
               </div>
             </div>
           </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card card-plain card-blog">
-            <div class="card-image border-radius-lg position-relative">
-              <a href="javascript:;">
-                <img class="w-100 border-radius-lg move-on-hover shadow" src="https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80">
-              </a>
-            </div>
-            <div class="card-body px-0">
-              <h5>
-                <a href="javascript:;" class="text-dark font-weight-bold">MateLabs machine learning</a>
-              </h5>
-              <p>
-                If you’ve ever wanted to train a machine learning model
-                and integrate it with IFTTT, you now can with ...
-              </p>
-              <a href="javascript:;" class="text-info icon-move-right">Read More
-                <i class="fas fa-arrow-right text-sm"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card card-plain card-blog">
-            <div class="card-image border-radius-lg position-relative">
-              <a href="javascript:;">
-                <img class="w-100 border-radius-lg move-on-hover shadow" src="https://images.unsplash.com/photo-1524678714210-9917a6c619c2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2249&q=80">
-              </a>
-            </div>
-            <div class="card-body px-0">
-              <h5>
-                <a href="javascript:;" class="text-dark font-weight-bold">US venture investment ticks</a>
-              </h5>
-              <p>
-                Venture investment in U.S. startups rose sequentially in
-                the second quarter of 2017, boosted by large, ate-stage financings
-              </p>
-              <a href="javascript:;" class="text-info icon-move-right">Read More
-                <i class="fas fa-arrow-right text-sm"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
       {% endfor %}
-    </div>
+        </div>
       {% else %}
         <p>There are no dishes in progress.</p>
       {% endif %}
   </section>
 
-{#  <section class="py-lg-7">#}
-{#    <div class="container">#}
-{#      <div class="row">#}
-{#        <div class="col">#}
-{#          <div class="card overflow-hidden mb-5">#}
-{#            <div class="row">#}
-{#              <div class="col-lg-7">#}
-{#                <form role="form" class="p-3" id="contact-form" method="post">#}
-{#                  <div class="card-header px-4 py-sm-5 py-3">#}
-{#                    <h2>Say Hi!</h2>#}
-{#                    <p class="lead"> We'd like to talk with you.</p>#}
-{#                  </div>#}
-{#                  <div class="card-body pt-1">#}
-{#                    <div class="row">#}
-{#                      <div class="col-md-12 pe-2 mb-3">#}
-{#                        <label>My name is</label>#}
-{#                        <input class="form-control" placeholder="Full Name" type="text">#}
-{#                      </div>#}
-{#                      <div class="col-md-12 pe-2 mb-3">#}
-{#                        <label>I'm looking for</label>#}
-{#                        <input class="form-control" placeholder="What you love" type="text">#}
-{#                      </div>#}
-{#                      <div class="col-md-12 pe-2 mb-3">#}
-{#                        <div class="form-group mb-0">#}
-{#                          <label>Your message</label>#}
-{#                          <textarea name="message" class="form-control" id="message" rows="6" placeholder="I want to say that..."></textarea>#}
-{#                        </div>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                    <div class="row">#}
-{#                      <div class="col-md-6 text-right ms-auto">#}
-{#                        <button type="submit" class="btn btn-round bg-gradient-info mb-0">Send Message</button>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                  </div>#}
-{#                </form>#}
-{#              </div>#}
-{#              <div class="col-lg-5 position-relative bg-cover px-0" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/curved5.jpg')">#}
-{#                <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none">#}
-{#                  <img src="{{ ASSETS_ROOT }}/img/wave-1.svg" class="h-100 ms-n2">#}
-{#                </div>#}
-{#                <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">#}
-{#                  <div class="mask bg-gradient-info opacity-9"></div>#}
-{#                  <div class="p-5 ps-sm-8 position-relative text-left my-auto z-index-2">#}
-{#                    <h3 class="text-white">Contact Information</h3>#}
-{#                    <p class="text-white opacity-8 mb-4">Fill up the form and our Team will get back to you within 24 hours.</p>#}
-{#                    <div class="d-flex p-2 text-white">#}
-{#                      <div>#}
-{#                        <i class="fas fa-phone text-sm"></i>#}
-{#                      </div>#}
-{#                      <div class="ps-3">#}
-{#                        <span class="text-sm opacity-8">(+40) 772 100 200</span>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                    <div class="d-flex p-2 text-white">#}
-{#                      <div>#}
-{#                        <i class="fas fa-envelope text-sm"></i>#}
-{#                      </div>#}
-{#                      <div class="ps-3">#}
-{#                        <span class="text-sm opacity-8">hello@creative-tim.com</span>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                    <div class="d-flex p-2 text-white">#}
-{#                      <div>#}
-{#                        <i class="fas fa-map-marker-alt text-sm"></i>#}
-{#                      </div>#}
-{#                      <div class="ps-3">#}
-{#                        <span class="text-sm opacity-8">Dyonisie Wolf Bucharest, RO 010458</span>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                    <div class="mt-4">#}
-{#                      <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Facebook">#}
-{#                        <i class="fab fa-facebook"></i>#}
-{#                      </button>#}
-{#                      <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Twitter">#}
-{#                        <i class="fab fa-twitter"></i>#}
-{#                      </button>#}
-{#                      <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Dribbble">#}
-{#                        <i class="fab fa-dribbble"></i>#}
-{#                      </button>#}
-{#                      <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Instagram">#}
-{#                        <i class="fab fa-instagram"></i>#}
-{#                      </button>#}
-{#                    </div>#}
-{#                  </div>#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-  </section>
 
 {% endblock content %}
 
@@ -322,108 +186,3 @@
   </script>
 
 {% endblock javascripts %}
-{#{% extends "base.html" %}#}
-{##}
-{#{% block title %} Page Headers {% endblock title %}#}
-{##}
-{#<!-- Specific CSS goes HERE -->#}
-{#{% block stylesheets %}{% endblock stylesheets %}#}
-{##}
-{#{% block body_class %} page-headers-sections {% endblock body_class %}#}
-{##}
-{#{% block content %}#}
-{##}
-{#  {% include "includes/navigation.html" %}#}
-{#  <header class="bg-gradient-dark">#}
-{#    <div class="page-header section-height-24" >#}
-{##}
-{#    </div>#}
-{#  </header>#}
-{#<section class="pt-sm-8 pb-5 position-relative">#}
-{#  <div class="container">#}
-{#    <div class="row">#}
-{#      <div class="col-lg-12 mx-auto">#}
-{#        <div class="position-relative border-radius-xl overflow-hidden shadow-lg mb-7 mt-155">#}
-{#          <div class="tab-content tab-space">#}
-{#            <div class="tab-pane active" id="preview-header-1">#}
-{#              <iframe width="100%" height="600px" srcdoc='<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
-{#        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />#}
-{#        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>#}
-{#        <!-- Nucleo Icons -->#}
-{#        <link href="{{ ASSETS_ROOT }}/css/nucleo-icons.css" rel="stylesheet" />#}
-{#        <link href="{{ ASSETS_ROOT }}/css/nucleo-svg.css" rel="stylesheet" /><link href="https://unpkg.com/soft-ui-design-system@1.0.1/assets/css/soft-design-system.min.css" rel="stylesheet" /><!-- -------- START HEADER 1 w/ text and image on right ------- -->#}
-{#<header>#}
-{#  <div class="page-header section-height-100">#}
-{#    <div class="oblique position-absolute top-0 h-100 d-md-block d-none">#}
-{#      <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url({{ ASSETS_ROOT }}/img/curved-images/curved11.jpg)"></div>#}
-{#    </div>#}
-{#    <div class="container">#}
-{#      <div class="row">#}
-{#        <div class="col-lg-6 col-md-7 d-flex justify-content-center flex-column">#}
-{#          <h1 class="text-gradient text-primary">{{cook.first_name}} {{ cook.last_name }}</h1>#}
-{#          <h3 class="mb-4">Experience: {{ cook.years_of_experience }} year{{ cook.years_of_experience|pluralize }}</h3>#}
-{#          <p class="lead pe-5 me-5"> {{ cook.first_name }} is passionate, confident, and creative chef who can skilfully plan menus, prepare outstanding food, manage budgets, and lead a team of people to deliver quality of service to your customers. </p>#}
-{#          <div class="buttons">#}
-{##}
-{#            <a href="{% url "restaurant:cook-update" pk=cook.id %}" type="button" class = "btn bg-gradient-primary link to page mt-4">Update photo</a>#}
-{#            <button type="button" class="btn btn-danger text-primary link-to-page mt-4"><a href="{% url "restaurant:cook-delete" pk=cook.id %}">Delete cook</a></button>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-{#  </div>#}
-{#</header>#}
-{#<!-- -------- END HEADER 1 w/ text and image on right ------- -->#}
-{##}
-{#        '></iframe>#}
-{#{% endblock content %}#}
-{#{% block javascripts %}#}
-{##}
-{#  <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>#}
-{#  <script>#}
-{#    if (document.getElementById('typed')) {#}
-{#      var typed = new Typed("#typed", {#}
-{#        stringsElement: '#typed-strings',#}
-{#        typeSpeed: 70,#}
-{#        backSpeed: 50,#}
-{#        backDelay: 200,#}
-{#        startDelay: 500,#}
-{#        loop: true#}
-{#      });#}
-{#    }#}
-{#  </script>#}
-{##}
-{#{% endblock javascripts %}#}
-{#{% extends "base.html" %}#}
-{##}
-{#{% block content %}#}
-{#  <h1>#}
-{#    Username: {{ cook.username }}#}
-{#    <a href="{% url 'restaurant:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">#}
-{#      Delete#}
-{#    </a>#}
-{##}
-{#    <a href="{% url 'restaurant:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">#}
-{#      Update photo#}
-{#    </a>#}
-{#  </h1>#}
-
-{#  <p><strong>First name:</strong> {{ cook.first_name }}</p>#}
-{#  <p><strong>Last name:</strong> {{ cook.last_name }}</p>#}
-{#  <p><strong>Experience:</strong> {{ cook.years_of_experiencer }} years</p>#}
-{##}
-{##}
-{#  <div class="ml-3">#}
-{#    <h4>Dishes</h4>#}
-{##}
-{#    {% for dish in cook.dishes.all %}#}
-{#        <hr>#}
-{#        <p><strong>Dish:</strong> {{ dish.name }}</p>#}
-{#        <p><strong>Dish type:</strong> {{ dish.dish_type.name }}</p>#}
-{#        <p class="text-muted"><strong>Id:</strong> {{car.id}}</p>#}
-{##}
-{#    {% empty %}#}
-{#      <p>No dishes!</p>#}
-{#    {% endfor %}#}
-{#  </div>#}
-{#{% endblock %}#}
