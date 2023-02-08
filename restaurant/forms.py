@@ -24,9 +24,10 @@ class CookCreationForm(UserCreationForm):
             "years_of_experience",
             "first_name",
             "last_name",
+            "photo",
         )
 
-    def clean_years_of_experience(self):  # this logic is optional, but possible
+    def clean_years_of_experience(self):
         return validate_years_of_experience(self.cleaned_data["years_of_experience"])
 
 
@@ -42,11 +43,21 @@ class CookExperienceUpdateForm(forms.ModelForm):
 def validate_years_of_experience(
     years_of_experience,
 ):
-    if years_of_experience <= 12:
-        raise ValidationError("Experience should be more or equal than 12 months")
-    elif not years_of_experience.isalpha():
+    if not isinstance(years_of_experience, int):
         raise ValidationError("Experience should be integer")
+    elif years_of_experience < 1:
+        raise ValidationError("Experience should be more or equal than 1 year")
 
     return years_of_experience
 
 
+class CookSearchForm(forms.Form):
+    first_name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "To find cook enter first name and press 'Enter' "}
+        )
+
+    )
