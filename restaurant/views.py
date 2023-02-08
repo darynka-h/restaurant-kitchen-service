@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -7,6 +8,7 @@ from restaurant.forms import CookExperienceUpdateForm, CookCreationForm
 from restaurant.models import Cook, Dish, DishType
 
 
+@login_required
 def index(request):
     num_cooks = Cook.objects.count()
     num_dishes = Dish.objects.count()
@@ -20,7 +22,7 @@ def index(request):
     return render(request, "restaurant/index.html", context=context)
 
 
-class DishTypeListView(LoginRequiredMixin, generic.ListView):
+class DishTypeListView(LoginRequiredMixin, generic.ListView): #dont forget to add LoginRequiredMixin
     model = DishType
     template_name = "restaurant/dish_type_list.html"
     context_object_name = "dish_type_list"
@@ -47,7 +49,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("restaurant:dish-type-list")
 
 
-class DishListView(LoginRequiredMixin, generic.ListView):
+class DishListView(LoginRequiredMixin, generic.ListView): #dont forget to add LoginRequiredMixin
     queryset = Dish.objects.all().select_related("dish_type")
     model = Dish
     template_name = "restaurant/dish_list.html"
@@ -79,13 +81,13 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = "restaurant/dish_confirm_delete.html"
 
 
-class CookListView(LoginRequiredMixin, generic.ListView):
+class CookListView(LoginRequiredMixin, generic.ListView): #dont forget to add LoginRequiredMixin
     model = Cook
-    template_name = "restaurant/cook_list.html"
-    context_object_name = "cook_list"
+    # template_name = "restaurant/cook_list.html"
+    # context_object_name = "cook_list"
 
 
-class CookDetailView(LoginRequiredMixin, generic.DetailView):
+class CookDetailView(LoginRequiredMixin, generic.DetailView): #dont forget to add LoginRequiredMixin
     model = Cook
     queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
     template_name = "restaurant/cook_detail.html"
