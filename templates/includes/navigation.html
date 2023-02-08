@@ -6,7 +6,7 @@
           <div class="container-fluid">
             <a class="navbar-brand font-weight-bolder ms-sm-3" 
                href="/" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
-              Soft UI Design System
+              Restaurant System
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon mt-2">
@@ -44,7 +44,7 @@
                         </div>
                         Landing Pages
                       </h6>
-                      <a href="/page-about-us.html" class="dropdown-item border-radius-md">
+                      <a href="{% url "restaurant:cook-list" %}" class="dropdown-item border-radius-md">
                         About Us
                       </a>
                       <a href="/page-contact-us.html" class="dropdown-item border-radius-md">
@@ -376,24 +376,18 @@
                         <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-buttons.html">
                           Buttons
                         </a>
-                        <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-avatars.html">
-                          Avatars
-                        </a>
+
                         <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-dropdowns.html">
                           Dropdowns
                         </a>
-                        <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-toggles.html">
-                          Toggles
-                        </a>
+
                         <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-breadcrumbs.html">
                           Breadcrumbs
                         </a>
                         <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-badges.html">
                           Badges
                         </a>
-                        <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-typography.html">
-                          Typography
-                        </a>
+
                         <a class="dropdown-item ps-3 border-radius-md mb-1" href="/elements-progress-bars.html">
                           Progress Bars
                         </a>
@@ -596,15 +590,23 @@
                   </ul>
                 </li>
                 <li class="nav-item ms-lg-auto">
-                  <a class="nav-link nav-link-icon me-2" href="{% url 'logout' %}">
-                    <i class="fa fa-sign-out me-1"></i>
-                    <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">Logout</p>
-                  </a>
+                  {% if user.is_authentificated %}
+                    <a class="nav-link nav-link-icon me-2" href="{% url 'logout' %}?next={{request.path}}">
+                      <i class="fa fa-sign-out me-1"></i>
+                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">Logout</p>
+                    </a>
+                  {% else %}
+                    <a class="nav-link nav-link-icon me-2" href="{% url 'login' %}?next={{request.path}}">
+                      <i class="fa fa-sign-out me-1"></i>
+                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Login">Login</p>
+                    </a>
+                  {% endif %}
+
                 </li>
                 <li class="nav-item my-auto ms-3 ms-lg-0">
-                  <a href="https://appseed.us/product/soft-ui-design-pro/django/"
+                  <a href="https://github.com/darynka-h/restaurant-kitchen-service"
                      target="_blank"
-                     class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">PRO Version</a>
+                     class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Project on GitHub</a>
                 </li>
               </ul>
             </div>
