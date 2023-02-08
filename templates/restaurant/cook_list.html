@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block title %} About US {% endblock title %}
 
@@ -20,14 +21,28 @@
   </header>
 
   <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
+
   <section class="pt-sm-8 pb-5 position-relative bg-gradient-dark overflow-hidden">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 text-left mb-5" >
-          <h3 class="text-white z-index-1 position-relative">The Executive Team</h3>
-          <p class="text-white opacity-8 mb-0">There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill.</p>
-        </div>
+
+{#        <div class="col-md-8 text-left mb-5">#}
+      <div class="col-md-12 text-center mt-0">
+        <form action="" method="get" class=" btn-round mb-0">
+          {{ search_form|crispy}}
+        </form>
+
+          <h3 class="text-white z-index-1 position-relative mt-5 ">Join our amazing team!
+           <a class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0" href="{% url "restaurant:cook-create" %}">Add cook</a>
+          </h3>
       </div>
+      </div>
+{#      <form class="form-inline bg-gradient-light" action="" method="get" style="display: inline">#}
+{#        {{ search_form|crispy }}#}
+{#        <input class="btn btn-primary border-radius-md" type="submit" value="Search">#}
+{#      </form>#}
+
+    <div class="row mt-2 mb-4" >
       {% if cook_list %}
       {% for cook in cook_list %}
         <div class="row mt-4 mb-4" >
@@ -45,7 +60,7 @@
                   <div class="card-body">
                     <h5 class="mb-0">ID: {{ cook.id }}</h5>
                     <h5 class="mb-0">Username: {{ cook.username }}</h5>
-                    <h6 class="text-info">Full name: {{cook.first_name}} {{ cook.last_name}}</h6>
+                    <h6 class="text-info"><a class="text-info" href="{% url "restaurant:cook-detail" pk=cook.id %}">Full name: {{cook.first_name}} {{ cook.last_name}}</a></h6>
                     <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
                   </div>
                 </div>
@@ -57,8 +72,9 @@
       {% endfor %}
     </div>
       {% else %}
-        <p>There are no drivers in the service.</p>
+        <p>There are no cooks with this name.</p>
       {% endif %}
+    </div>
     </section>
 
 {% endblock content %}
