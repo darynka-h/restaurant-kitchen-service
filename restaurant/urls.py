@@ -69,16 +69,16 @@ urlpatterns = [
     path(
         "cooks/",
         CookListView.as_view(),
-        name="cooks-list",
+        name="cook-list",
     ),
     path(
         "cooks/<int:pk>/",
         CookDetailView.as_view(),
         name="cook-detail"
     ),
-    path("cooks/create/",
-         CookCreateView.as_view(),
-         name="cook-create"),
+    path(
+        "cooks/create/", CookCreateView.as_view(), name="cook-create"
+    ),
     path(
         "cooks/<int:pk>/update/",
         CookExperienceUpdateView.as_view(),

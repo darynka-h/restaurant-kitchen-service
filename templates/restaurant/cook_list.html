@@ -37,11 +37,6 @@
           </h3>
       </div>
       </div>
-{#      <form class="form-inline bg-gradient-light" action="" method="get" style="display: inline">#}
-{#        {{ search_form|crispy }}#}
-{#        <input class="btn btn-primary border-radius-md" type="submit" value="Search">#}
-{#      </form>#}
-
     <div class="row mt-2 mb-4" >
       {% if cook_list %}
       {% for cook in cook_list %}
@@ -52,7 +47,7 @@
                 <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
                   <a href="javascript:;">
                     <div class="p-3 pe-0">
-                      <img class="w-100 border-radius-md" src="{{cook.photo.url}}" alt="connect">
+{#                      <img class="w-100 border-radius-md" src="{{cook.photo.url}}" alt="connect">#}
                     </div>
                   </a>
                 </div>

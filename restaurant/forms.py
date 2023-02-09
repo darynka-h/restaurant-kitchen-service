@@ -3,7 +3,19 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from restaurant.models import Dish, Cook
+from restaurant.models import Dish, Cook, DishType
+
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "To find dish type enter a name and press 'Enter' "}
+        )
+
+    )
 
 
 class DishForm(forms.ModelForm):
@@ -15,6 +27,18 @@ class DishForm(forms.ModelForm):
     class Meta:
         model = Dish
         fields = "__all__"
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "To find dish enter a name and press 'Enter' "}
+        )
+
+    )
 
 
 class CookCreationForm(UserCreationForm):
