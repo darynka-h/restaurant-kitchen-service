@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from restaurant.forms import CookExperienceUpdateForm, CookCreationForm, CookSearchForm, DishSearchForm, \
     DishTypeSearchForm
+from restaurant.handle_uploaded_file import handle_uploaded_file
 from restaurant.models import Cook, Dish, DishType
 
 
@@ -148,6 +150,27 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Cook
     form_class = CookCreationForm
     success_url = reverse_lazy("restaurant:cook-detail")
+
+    # pk = None
+    # template_name = 'restaurant/cook_detail.html'
+
+    # def form_valid(self, form):
+    #     item = form.save()
+    #     self.pk = item.pk
+    #     return super(CookCreateView, self).form_valid(form)
+    # def get_success_url(self):
+    #     return reverse("restaurant:cook-detail", kwargs={"pk": self.pk})
+
+# написати
+# def upload_file(request):
+#     if request.method == 'POST':
+#         form = CookCreationForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             handle_uploaded_file(request.FILES['file'])
+#             return HttpResponseRedirect('/success/url/')
+#     else:
+#         form = CookCreationForm()
+#     return render(request, "restaurant/cook_list.html", {'form': form})
 
 
 class CookExperienceUpdateView(LoginRequiredMixin, generic.UpdateView):

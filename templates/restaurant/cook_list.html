@@ -28,7 +28,7 @@
 
 {#        <div class="col-md-8 text-left mb-5">#}
       <div class="col-md-12 text-center mt-0">
-        <form action="" method="get" class=" btn-round mb-0">
+        <form enctype="multipart/form-data" action="" method="get" class=" btn-round mb-0">
           {{ search_form|crispy}}
         </form>
 
@@ -44,13 +44,15 @@
           <div class="col-lg-6 col-12" style="margin-left: auto; margin-right: auto; column-width: auto">
             <div class="card card-profile overflow-hidden z-index-2">
               <div class="row">
+                {% if cook.photo %}
                 <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
                   <a href="javascript:;">
                     <div class="p-3 pe-0">
-{#                      <img class="w-100 border-radius-md" src="{{cook.photo.url}}" alt="connect">#}
+                      <img class="w-100 border-radius-md" src="{{cook.photo.url}}" alt="connect">
                     </div>
                   </a>
                 </div>
+                {% endif %}
                 <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
                   <div class="card-body">
                     <h5 class="mb-0">ID: {{ cook.id }}</h5>

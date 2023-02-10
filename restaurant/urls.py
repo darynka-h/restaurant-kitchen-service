@@ -1,3 +1,4 @@
+from django.http import request
 from django.urls import path
 
 from .views import (
@@ -15,7 +16,7 @@ from .views import (
     DishDeleteView,
     CookCreateView,
     CookExperienceUpdateView,
-    CookDeleteView
+    CookDeleteView,
 )
 
 urlpatterns = [
@@ -76,8 +77,10 @@ urlpatterns = [
         CookDetailView.as_view(),
         name="cook-detail"
     ),
-    path(
-        "cooks/create/", CookCreateView.as_view(), name="cook-create"
+    # path(
+    #     "cooks/create/", upload_file(request), name="cook-create"
+    # ),
+    path("cooks/create/", CookCreateView.as_view(), name="cook-create"
     ),
     path(
         "cooks/<int:pk>/update/",

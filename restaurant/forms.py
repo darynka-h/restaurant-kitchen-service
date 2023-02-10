@@ -42,6 +42,8 @@ class DishSearchForm(forms.Form):
 
 
 class CookCreationForm(UserCreationForm):
+    photo = forms.FileField()
+
     class Meta(UserCreationForm.Meta):
         model = Cook
         fields = UserCreationForm.Meta.fields + (
@@ -50,6 +52,7 @@ class CookCreationForm(UserCreationForm):
             "last_name",
             "photo",
         )
+        # fields = "__all__"
 
     def clean_years_of_experience(self):
         return validate_years_of_experience(self.cleaned_data["years_of_experience"])
