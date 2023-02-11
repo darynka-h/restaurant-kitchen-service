@@ -5,9 +5,14 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from restaurant.forms import CookExperienceUpdateForm, CookCreationForm, CookSearchForm, DishSearchForm, \
-    DishTypeSearchForm
-from restaurant.handle_uploaded_file import handle_uploaded_file
+from restaurant.forms import (
+    CookExperienceUpdateForm,
+    CookCreationForm,
+    CookSearchForm,
+    DishSearchForm,
+    DishTypeSearchForm,
+)
+
 from restaurant.models import Cook, Dish, DishType
 
 
@@ -25,7 +30,7 @@ def index(request):
     return render(request, "restaurant/index.html", context=context)
 
 
-class DishTypeListView(LoginRequiredMixin, generic.ListView): #dont forget to add LoginRequiredMixin
+class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     template_name = "restaurant/dish_type_list.html"
     context_object_name = "dish_type_list"
@@ -69,7 +74,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("restaurant:dish-type-list")
 
 
-class DishListView(LoginRequiredMixin, generic.ListView): #dont forget to add LoginRequiredMixin
+class DishListView(LoginRequiredMixin, generic.ListView):
     queryset = Dish.objects.all().select_related("dish_type")
     model = Dish
     template_name = "restaurant/dish_list.html"
@@ -118,7 +123,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = "restaurant/dish_confirm_delete.html"
 
 
-class CookListView(LoginRequiredMixin, generic.ListView): #dont forget to add LoginRequiredMixin
+class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     paginate_by = 5
 
@@ -149,28 +154,9 @@ class CookDetailView(LoginRequiredMixin, generic.DetailView): #dont forget to ad
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Cook
     form_class = CookCreationForm
-    success_url = reverse_lazy("restaurant:cook-detail")
 
-    # pk = None
-    # template_name = 'restaurant/cook_detail.html'
-
-    # def form_valid(self, form):
-    #     item = form.save()
-    #     self.pk = item.pk
-    #     return super(CookCreateView, self).form_valid(form)
-    # def get_success_url(self):
-    #     return reverse("restaurant:cook-detail", kwargs={"pk": self.pk})
-
-# написати
-# def upload_file(request):
-#     if request.method == 'POST':
-#         form = CookCreationForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             handle_uploaded_file(request.FILES['file'])
-#             return HttpResponseRedirect('/success/url/')
-#     else:
-#         form = CookCreationForm()
-#     return render(request, "restaurant/cook_list.html", {'form': form})
+    def get_success_url(self):
+        return reverse("restaurant:cook-detail", kwargs={"pk": self.object.pk})
 
 
 class CookExperienceUpdateView(LoginRequiredMixin, generic.UpdateView):
