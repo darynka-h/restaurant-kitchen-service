@@ -44,6 +44,10 @@
           </div>
         </div>
       </div>
+{#      <button type="button" class="btn bg-gradient-danger w-auto me-2">Danger</button>#}
+      <div class="d-block">
+        <a type="button" class="btn bg-gradient-danger w-auto me-2" href="{% url "restaurant:cook-delete" pk=cook.id %}">Delete</a>
+      </div>
     </div>
   </section>
   <section class="py-3">
