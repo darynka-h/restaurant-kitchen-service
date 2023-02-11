@@ -56,9 +56,10 @@ class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = DishType
     fields = "__all__"
     # success_url = reverse_lazy("restaurant:dish-list")
+    template_name = "restaurant/dish_type_form.html"
 
     def get_success_url(self):
-        return reverse("restaurant:dish-type-list", kwargs={"pk": self.object.pk})
+        return reverse("restaurant:dish-type-list")
 
 
 class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
