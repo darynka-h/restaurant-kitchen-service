@@ -51,19 +51,19 @@
           <div class="row">
             <div class="col-md-4 position-relative">
               <div class="p-3 text-center">
-                <h1><a class="text-gradient text-primary" href="{% url "restaurant:dish-list" %}"><span id="state1" countTo={{num_dishes}}>0</span>+</a></h1>
+                <h1><a class="text-gradient text-primary" href="{% url "restaurant:dish-type-list" %}"><span id="state1" countTo={{num_dishes}}>0</span>+</a></h1>
 {#                <h1 class="text-gradient text-primary"><span id="state1" countTo={{num_dishes}}>0</span>+</h1>#}
-                <h5 class="mt-3"><a href="{% url "restaurant:dish-list" %}">Dishes</a></h5>
-                <p class="text-sm">Click to choose your favourite dish</p>
+                <h5 class="mt-3"><a href="{% url "restaurant:dish-type-list" %}">Dishes Types</a></h5>
+                <p class="text-sm">Click to choose your favourite dish type</p>
               </div>
               <hr class="vertical dark">
             </div>
             <div class="col-md-4 position-relative">
               <div class="p-3 text-center">
-                <h1><a class="text-gradient text-primary" href="{% url "restaurant:dish-type-list" %}"><span id="state2" countTo={{num_dish_types}}>0</span>+</a></h1>
+                <h1><a class="text-gradient text-primary" href="{% url "restaurant:dish-list" %}"><span id="state2" countTo={{num_dish_types}}>0</span>+</a></h1>
 {#                <h1 class="text-gradient text-primary"> <span id="state2" countTo={{ num_dish_types }}>0</span>+</h1>#}
-                <h5 class="mt-3"><a href="{% url "restaurant:dish-type-list" %}">Dish Types</a></h5>
-                <p class="text-sm">Click to choose your favourite dish type</p>
+                <h5 class="mt-3"><a href="{% url "restaurant:dish-list" %}">Dishes</a></h5>
+                <p class="text-sm">Click to choose your favourite dish</p>
               </div>
               <hr class="vertical dark">
             </div>
