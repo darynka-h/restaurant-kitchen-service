@@ -37,12 +37,15 @@
                 {% if dish.description %}
                 {{ dish.description }}
                 {% else %}
-                  <p>There are not description for this dish yet! Ask it in waiter =) </p>
+                  <p>There are not description for this dish yet! Ask waiter for description =) </p>
                 {% endif %}
               </p>
             </div>
           </div>
         </div>
+      </div>
+      <div class="d-block">
+        <a type="button" class="btn bg-gradient-danger w-auto me-2" href="{% url "restaurant:dish-delete" pk=dish.id %}">Delete</a>
       </div>
     </div>
   </section>
@@ -81,7 +84,7 @@
       {% else %}
         <p>There are no cooks for cooking this dish.</p>
       {% endif %}
-    </div>>
+    </div>
   </section>
 
 

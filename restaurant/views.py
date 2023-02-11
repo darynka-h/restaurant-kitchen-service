@@ -123,7 +123,7 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Dish
-    fields = "__all__"
+    # fields = "__all__"
     success_url = reverse_lazy("restaurant:dish-list")
     template_name = "restaurant/dish_confirm_delete.html"
 
@@ -172,4 +172,5 @@ class CookExperienceUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Cook
+    template_name = "restaurant/cook_confirm_delete.html"
     success_url = reverse_lazy("restaurant:cook-list")
