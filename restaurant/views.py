@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
@@ -10,7 +9,7 @@ from restaurant.forms import (
     CookCreationForm,
     CookSearchForm,
     DishSearchForm,
-    DishTypeSearchForm,
+    DishTypeSearchForm, DishForm,
 )
 
 from restaurant.models import Cook, Dish, DishType
@@ -56,8 +55,10 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = DishType
     fields = "__all__"
-    template_name = "restaurant/dish_type_list.html"
-    success_url = reverse_lazy("restaurant:dish-type-list")
+    # success_url = reverse_lazy("restaurant:dish-list")
+
+    def get_success_url(self):
+        return reverse("restaurant:dish-type-list", kwargs={"pk": self.object.pk})
 
 
 class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -106,8 +107,11 @@ class DishDetailView(LoginRequiredMixin, generic.DetailView):
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
-    fields = "__all__"
-    success_url = reverse_lazy("restaurant:dish-list")
+    form_class = DishForm
+    # success_url = reverse_lazy("restaurant:dish-list")
+
+    def get_success_url(self):
+        return reverse("restaurant:dish-detail", kwargs={"pk": self.object.pk})
 
 
 class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -145,7 +149,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class CookDetailView(LoginRequiredMixin, generic.DetailView): #dont forget to add LoginRequiredMixin
+class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
     queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
     template_name = "restaurant/cook_detail.html"

@@ -42,7 +42,7 @@ class DishSearchForm(forms.Form):
 
 
 class CookCreationForm(UserCreationForm):
-    photo = forms.FileField()
+    # photo = forms.FileField()
 
     class Meta(UserCreationForm.Meta):
         model = Cook
