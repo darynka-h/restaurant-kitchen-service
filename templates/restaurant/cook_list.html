@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %} About US {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} about-us {% endblock body_class %}
+
+{% block content %}
+
+  {% include "includes/navigation.html" %}
+
+  <!-- End Navbar -->
+  <!-- -------- START HEADER 7 w/ text and video ------- -->
+  <header class="bg-gradient-dark">
+    <div class="page-header section-height-24" >
+
+    </div>
+  </header>
+
+  <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
+
+  <section class="pt-sm-8 pb-5 position-relative bg-gradient-dark overflow-hidden">
+    <div class="container">
+      <div class="row">
+
+{#        <div class="col-md-8 text-left mb-5">#}
+      <div class="col-md-12 text-center mt-0">
+        <form enctype="multipart/form-data" action="" method="get" class=" btn-round mb-0">
+          {{ search_form|crispy}}
+        </form>
+
+          <h3 class="text-white z-index-1 position-relative mt-5 ">Join our amazing team!
+           <a class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0" href="{% url "restaurant:cook-create" %}">Add cook</a>
+          </h3>
+      </div>
+      </div>
+    <div class="row mt-2 mb-4" >
+      {% if cook_list %}
+      {% for cook in cook_list %}
+        <div class="row mt-4 mb-4" >
+          <div class="col-lg-6 col-12" style="margin-left: auto; margin-right: auto; column-width: auto">
+            <div class="card card-profile overflow-hidden z-index-2">
+              <div class="row">
+                {% if cook.photo %}
+                <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                  <a href="javascript:;">
+                    <div class="p-3 pe-0">
+                      <img class="w-100 border-radius-md" src="{{cook.photo.url}}" alt="connect">
+                    </div>
+                  </a>
+                </div>
+                {% endif %}
+                <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                  <div class="card-body">
+                    <h5 class="mb-0">ID: {{ cook.id }}</h5>
+                    <h5 class="mb-0">Username: {{ cook.username }}</h5>
+                    <h6 class="text-info"><a class="text-info" href="{% url "restaurant:cook-detail" pk=cook.id %}">Full name: {{cook.first_name}} {{ cook.last_name}}</a></h6>
+                    <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+        <div class="row mt-4 mb-4" >
+          <div class="col-lg-1 col-12" style="margin-left: auto; margin-right: auto; column-width: auto">
+            <div class="row">
+              {% include "includes/pagination.html" %}
+            </div>
+          </div>
+        </div>
+    </div>
+      {% else %}
+        <p>There are no cooks with this name.</p>
+      {% endif %}
+    </div>
+{#    <div style= "margin-left: auto; margin-right: auto; column-width: auto">#}
+{#      {% include "includes/pagination.html" %}#}
+{#    </div>#}
+    </section>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+  <script src="{{ ASSETS_ROOT }}/js/plugins/countup.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+  <script>
+    // get the element to animate
+    var element = document.getElementById('count-stats');
+    var elementHeight = element.clientHeight;
+
+    // listen for scroll event and call animate function
+
+    document.addEventListener('scroll', animate);
+
+    // check if element is in view
+    function inView() {
+      // get window height
+      var windowHeight = window.innerHeight;
+      // get number of pixels that the document is scrolled
+      var scrollY = window.scrollY || window.pageYOffset;
+      // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+      var scrollPosition = scrollY + windowHeight;
+      // get element position (distance from the top of the page to the bottom of the element)
+      var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+
+      // is scroll position greater than element position? (is element in view?)
+      if (scrollPosition > elementPosition) {
+        return true;
+      }
+
+      return false;
+    }
+
+    var animateComplete = true;
+    // animate element when it is in view
+    function animate() {
+
+      // is element in view?
+      if (inView()) {
+        if (animateComplete) {
+          if (document.getElementById('state1')) {
+            const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+            if (!countUp.error) {
+              countUp.start();
+            } else {
+              console.error(countUp.error);
+            }
+          }
+          if (document.getElementById('state2')) {
+            const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+            if (!countUp1.error) {
+              countUp1.start();
+            } else {
+              console.error(countUp1.error);
+            }
+          }
+          if (document.getElementById('state3')) {
+            const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+            if (!countUp2.error) {
+              countUp2.start();
+            } else {
+              console.error(countUp2.error);
+            };
+          }
+          animateComplete = false;
+        }
+      }
+    }
+
+    if (document.getElementById('typed')) {
+      var typed = new Typed("#typed", {
+        stringsElement: '#typed-strings',
+        typeSpeed: 90,
+        backSpeed: 90,
+        backDelay: 200,
+        startDelay: 500,
+        loop: true
+      });
+    }
+  </script>
+  <script>
+    if (document.getElementsByClassName('page-header')) {
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.pageYOffset;
+        var bgParallax = document.querySelector('.page-header');
+        var limit = bgParallax.offsetTop + bgParallax.offsetHeight;
+        if (scrollPosition > bgParallax.offsetTop && scrollPosition <= limit) {
+          bgParallax.style.backgroundPositionY = (50 - 10 * scrollPosition / limit * 3) + '%';
+        } else {
+          bgParallax.style.backgroundPositionY = '50%';
+        }
+      });
+    }
+  </script>
+
+{% endblock javascripts %}
