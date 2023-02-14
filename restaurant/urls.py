@@ -77,10 +77,10 @@ urlpatterns = [
         CookDetailView.as_view(),
         name="cook-detail"
     ),
-    # path(
-    #     "cooks/create/", upload_file(request), name="cook-create"
-    # ),
-    path("cooks/create/", CookCreateView.as_view(), name="cook-create"
+    path(
+        "cooks/create/",
+        CookCreateView.as_view(),
+        name="cook-create"
     ),
     path(
         "cooks/<int:pk>/update/",

@@ -23,10 +23,10 @@ class PrivateDishTypeTest(TestCase):
             "Test", "123password123"
         )
         self.client.force_login(self.user)
-        DishType.objects.create(name="Pizza")
         DishType.objects.create(name="Pasta")
         DishType.objects.create(name="Biscuit")
         DishType.objects.create(name="Bistro")
+
     def test_dish_type_retrieve(self):
         response = self.client.get(DISH_TYPE_URL)
         dish_types = DishType.objects.all()
@@ -39,10 +39,10 @@ class PrivateDishTypeTest(TestCase):
 
     def test_dish_type_search_form_with_name(self):
         response = self.client.get(DISH_TYPE_URL, {
-            "name": "bis"
+            "name": "pa"
         })
         dish_types = DishType.objects.all()
-        queryset = dish_types.filter(name__icontains="bis")
+        queryset = dish_types.filter(name__icontains="pa")
         self.assertEqual(list(
             response.context["dish_type_list"]), list(queryset)
         )
@@ -74,9 +74,15 @@ class PrivateCookTest(TestCase):
             "Test", "123password123"
         )
         self.client.force_login(self.user)
-        Cook.objects.create(username="user_1", first_name="Cook_busy", years_of_experience=7)
-        Cook.objects.create(username="user_2", first_name="Test_cook", years_of_experience=16)
-        Cook.objects.create(username="user_3", first_name="Best_cook", years_of_experience=5)
+        Cook.objects.create(
+            username="user_1", first_name="Cook_busy", years_of_experience=7
+        )
+        Cook.objects.create(
+            username="user_2", first_name="Test_cook", years_of_experience=16
+        )
+        Cook.objects.create(
+            username="user_3", first_name="Best_cook", years_of_experience=5
+        )
 
     def test_create_cook(self):
         form_data = {
@@ -87,26 +93,20 @@ class PrivateCookTest(TestCase):
             "first_name": "Cook",
             "last_name": "Boss",
             "photo": SimpleUploadedFile(
-                    name="cook_image_2.png",
-                    content=open("tests/cook_image_2.png", "rb").read(),
-                    content_type="image/png"
-                )
+                name="cook_image_2.png",
+                content=open("tests/cook_image_2.png", "rb").read(),
+                content_type="image/png"
+            )
         }
-
-        # file_data = {
-        #     "photo": SimpleUploadedFile(
-        #         name="cook_image_2.png",
-        #         content=open("tests/cook_image_2.png", "rb").read(),
-        #         content_type="image/png"
-        #     )
-        # }
 
         self.client.post(reverse("restaurant:cook-create"), data=form_data)
         new_user = get_user_model().objects.get(username=form_data["username"])
         new_user.save()
         self.assertEqual(new_user.first_name, form_data["first_name"])
         self.assertEqual(new_user.last_name, form_data["last_name"])
-        self.assertEqual(new_user.years_of_experience, form_data["years_of_experience"])
+        self.assertEqual(
+            new_user.years_of_experience, form_data["years_of_experience"]
+        )
 
     def test_cook_search_form_with_first_name(self):
         response = self.client.get(COOK_URL, {

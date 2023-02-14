@@ -12,7 +12,10 @@ class DishTypeSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "To find dish type enter a name and press 'Enter' "}
+            attrs={
+                "placeholder": "To find dish type enter a name "
+                               "and press 'Enter'"
+            }
         )
 
     )
@@ -35,7 +38,9 @@ class DishSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "To find dish enter a name and press 'Enter' "}
+            attrs={
+                "placeholder": "To find dish enter a name and press 'Enter' "
+            }
         )
 
     )
@@ -52,10 +57,11 @@ class CookCreationForm(UserCreationForm):
             "last_name",
             "photo",
         )
-        # fields = "__all__"
 
     def clean_years_of_experience(self):
-        return validate_years_of_experience(self.cleaned_data["years_of_experience"])
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 class CookExperienceUpdateForm(forms.ModelForm):
@@ -64,7 +70,9 @@ class CookExperienceUpdateForm(forms.ModelForm):
         fields = ["years_of_experience"]
 
     def clean_years_of_experience(self):
-        return validate_years_of_experience(self.cleaned_data["years_of_experience"])
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 def validate_years_of_experience(
@@ -84,7 +92,9 @@ class CookSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "To find cook enter first name and press 'Enter' "}
+            attrs={
+                "placeholder": "To find cook enter first name and press "
+                               "'Enter'"
+            }
         )
-
     )
