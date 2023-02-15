@@ -44,7 +44,6 @@
           </div>
         </div>
       </div>
-{#      <button type="button" class="btn bg-gradient-danger w-auto me-2">Danger</button>#}
       <div class="d-block">
         <a type="button" class="btn bg-gradient-danger w-auto me-2" href="{% url "restaurant:cook-delete" pk=cook.id %}">Delete</a>
       </div>
@@ -72,8 +71,7 @@
                   <a href="javascript:;" class="text-dark font-weight-bold">{{ dish.name }}</a>
                 </h5>
                 <p>
-                  Finding temporary housing for your dog should be as easy as
-                  renting an Airbnb. That’s the idea behind Rover ...
+                  {{dish.description}}
                 </p>
                 <a href="javascript:;"><a class="text-info icon-move-right" href="{% url "restaurant:dish-detail" pk=dish.id %}">Read More</a>
                   <i class="fas fa-arrow-right text-sm text-info icon-move-right"></i>
