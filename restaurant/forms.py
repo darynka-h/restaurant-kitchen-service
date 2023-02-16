@@ -1,9 +1,10 @@
+from __future__ import annotations
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from restaurant.models import Dish, Cook, DishType
+from restaurant.models import Dish, Cook
 
 
 class DishTypeSearchForm(forms.Form):
@@ -76,8 +77,8 @@ class CookExperienceUpdateForm(forms.ModelForm):
 
 
 def validate_years_of_experience(
-    years_of_experience,
-):
+    years_of_experience: float | str,
+) -> int:       # check if years_of_experience is integer
     if not isinstance(years_of_experience, int):
         raise ValidationError("Experience should be integer")
     elif years_of_experience < 1:
