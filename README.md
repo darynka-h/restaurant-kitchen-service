@@ -14,10 +14,19 @@
    - `python manage.py migrate`
 5. Run your server using the command below
    - `python manage.py runserver`
+6. In this project you can use environment variables.
+   - Environment variables are variables which  you store outside of your program. 
+   
+   This variables can affect how your program runs. 
+   For example, you can set environment variables that contain the key and secret for an API, but in my project I use
+   only SECRET_KEY(example of it you can find in .env_sample). 
 ## What this project is about?
-This project can improve the communication between cooks on the professional 
-kitchen in restaurant or café. It is a management system, in which cooks can 
-create new dishes & dish-types using creation form with name of dish and image.
-Cook can see detail about other cook and see which dishes they are cooking. 
-There are detail page for every dish, 
-Cook can find detail information about every dish and who is cooking it on detail page of every dish. 
+   This project can improve the communication between cooks on the professional 
+   kitchen in restaurant or café.
+   It is a management system, in which cooks can: 
+   - create new dishes & dish-types using creation form with name of dish and image. 
+   - see detail about other cook and see which dishes they are cooking. 
+   - check detail page of every dish, find detail information 
+   about every dish type 
+   - check who is cooking particular dish on detail page of every dish. 
+
