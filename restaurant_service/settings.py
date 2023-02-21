@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import dj_database_url
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -49,6 +52,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -92,6 +96,9 @@ DATABASES = {
     }
 }
 
+# dj-database-url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES["default"].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -117,6 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "restaurant.Cook"
+LOGIN_REDIRECT_URL = "/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -140,9 +148,12 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_ROOT = BASE_DIR / "staticfiles" / "uploads"
 MEDIA_URL = "uploads/"
+
 # MEDIA_URL = '/media/'
 # # Path where media is stored
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -150,5 +161,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ASSETS_ROOT = "/static/assets"
 
-
-print(os.environ)

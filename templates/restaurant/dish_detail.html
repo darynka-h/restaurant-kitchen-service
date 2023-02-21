@@ -61,11 +61,13 @@
           {% for cook in dish.cooks.all %}
           <div class="col-lg-3 col-sm-6">
             <div class="card card-plain card-blog">
+              {% if cook.photo %}
               <div class="card-image border-radius-lg position-relative">
                 <a href="javascript:;">
                   <img class="img border-radius-lg max-width-200 w-100 position-relative z-index-2" src="{{ cook.photo.url }}" alt="connect">
                 </a>
               </div>
+              {% endif %}
               <div class="card-body px-0">
                 <h5>
                   <a href="javascript:;" class="text-dark font-weight-bold">{{ cook.first_name }} {{ cook.last_name}}</a>
