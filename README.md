@@ -35,5 +35,5 @@
    - Environment variables are variables which  you store outside of your program. 
    
    This variables can affect how your program runs. 
-   For example, you can set environment variables that contain the key and secret for an API, but in my project I use
-   only SECRET_KEY(example of it you can find in .env_sample). 
+   For example, you can set environment variables that contain the key and secret for an API, in my project I use
+   only SECRET_KEY, DATABASE_URL, DROPBOX_APP_KEY(an example of these keys you can find in .env_sample). 
