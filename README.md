@@ -26,9 +26,12 @@
    - pip install -r requirements.txt
 4. Don't forget to do migrations
    - `python manage.py migrate`
-5. Run your server using the command below
+5. You can use following superuser (or create another one by yourself):
+   - Login: hannochenko
+   - Password: 123User1@3
+6. Run your server using the command below
    - `python manage.py runserver`
-6. In this project you can use environment variables.
+7. In this project you can use environment variables.
    - Environment variables are variables which  you store outside of your program. 
    
    This variables can affect how your program runs. 
