@@ -10,6 +10,12 @@
    about every dish type 
    - check who is cooking particular dish on detail page of every dish.
 
+   Link to the [project website](https://restaurant-managment-service.onrender.com) on Render
+
+   Use following superuser
+   - Login: hannochenko
+   - Password: 123User1@3
+
 ![Screenshot from 2023-02-16 13-48-20](https://user-images.githubusercontent.com/107792308/219454853-36ec492d-b6b6-46e1-98d2-a3062f9805a3.png)
 ![Screenshot from 2023-02-16 13-48-32](https://user-images.githubusercontent.com/107792308/219454883-d413f322-f1de-410b-b95f-f5cfb91b06a1.png)
 
